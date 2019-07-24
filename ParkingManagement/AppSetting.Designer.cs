@@ -487,7 +487,7 @@
             this.minTimeScan.Size = new System.Drawing.Size(106, 31);
             this.minTimeScan.TabIndex = 26;
             this.minTimeScan.Value = new decimal(new int[] {
-            3600,
+            10,
             0,
             0,
             0});

@@ -192,13 +192,13 @@ namespace EmployeeManagement
                 {
                     string msg = new String(_barcode.ToArray());
                     lblId.Text = msg;
-
-                    if (_barcode.Count == 1)
-                    {
-                        lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
-                        picBoxEmployee.Image = null;
-                    }
                 }
+                if (_barcode.Count == 1)
+                {
+                    lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
+                    picBoxEmployee.Image = null;
+                }
+                
                 clearImageWindow();
             }
             else if (e.KeyChar == 13 && _barcode.Count > 0) //MAIN EVENT
@@ -218,7 +218,8 @@ namespace EmployeeManagement
                 }
 
                 // Employee exist or not
-                if (!isEmployeeExist(empId))
+                EmployeeData empData = getEmployeeDataIfExist(empId);
+                if (!empData.exist)
                 {
                     lblId.Text = lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
                     picBoxEmployee.Image = null;
@@ -264,7 +265,7 @@ namespace EmployeeManagement
                     Console.WriteLine(rowExist);
                     Console.WriteLine(frontImageCheckIn + "_" + rearImageCheckIn);
                     updateTimeInOut(empId, absFrontImageDir, absRearImageDir, rowExist);
-                    displayNameAndImage(empId);
+                    displayNameAndImage(empData);
                     displayTime();
                     if (!rowExist) //checkin
                     {
@@ -412,89 +413,94 @@ namespace EmployeeManagement
             return "";
         }
 
-        private void displayNameAndImage(string empId)
+        private EmployeeData getEmployeeDataIfExist(string id)
         {
+            EmployeeData retData = new EmployeeData();
             try
             {
                 if (this.OpenConnection() == true)
                 {
                     MySqlDataReader reader = null;
-                    string selectCmd = "select last_name,first_name,bophan_id from employees where emp_no='" + empId + "';";
+                    string selectCmd = "SELECT tab1.last_name, tab1.first_name, tab2.name ";
+                    selectCmd += "FROM employees AS tab1 ";
+                    selectCmd += "INNER JOIN bophan AS tab2 ON (tab1.bophan_id = tab2.id) "; // join the Department table
+                    selectCmd += "WHERE tab1.emp_no='" + id + "';";
 
                     MySqlCommand command = new MySqlCommand(selectCmd, connection);
                     reader = command.ExecuteReader();
-
-                    string name = "";
-                    string bo_phan_id = "";
-                    string bo_phan = "";
 
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            name += reader.GetString(0);
-                            name += " ";
-                            name += reader.GetString(1);
-                            try
-                            {
-                                bo_phan_id = reader.GetString(2);
-                            }
-                            catch { }
+                            retData.empId = id;
+                            retData.lastName = reader["last_name"].ToString();
+                            retData.firstName = reader["first_name"].ToString();
+                            retData.deptStr = reader["name"].ToString(); // Department
+                            retData.exist = true;
                         }
+                        reader.Close();
                     }
-                    CloseConnection();
-                    lblName.Text = name;
-
-                    // Department
-                    this.OpenConnection();
-                    selectCmd = "select name from bophan where id='" + bo_phan_id + "';";
-                    MySqlCommand command2 = new MySqlCommand(selectCmd, connection);
-                    MySqlDataReader reader2 = command2.ExecuteReader();
-                    if (reader2.HasRows)
+                    else
                     {
-                        while (reader2.Read())
-                        {
-                            bo_phan = reader2.GetString(0);
-                        }
+                        Console.WriteLine("Seems the employee does not exist");
+                        retData.exist = false;
                     }
-                    txtRole.Text = bo_phan;
-                    CloseConnection();
 
-                    // Motorbike number
-                    string motorNum = "";
-                    this.OpenConnection();
-                    selectCmd = "select num from bienso where emp_no='" + empId + "';";
-                    MySqlCommand command3 = new MySqlCommand(selectCmd, connection);
-                    MySqlDataReader reader3 = command3.ExecuteReader();
-                    if (reader3.HasRows)
-                    {
-                        while (reader3.Read())
-                        {
-                            if (!reader3.IsDBNull(0))
-                            {
-                                motorNum = reader3.GetString(0);
-                            }
-                            
-                        }
-                    }
-                    lblMotorNum.Text = motorNum;
-                    CloseConnection();
+                    this.CloseConnection();
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to get the employee data: " + ex.ToString());
+                this.CloseConnection();
+            }
+
+            retData.dump();
+            return retData;
+        }
+
+        private void displayNameAndImage(EmployeeData empData)
+        {
+            try
+            {
+                lblName.Text = empData.getEmployeeName();
+                txtRole.Text = empData.deptStr;
+
+                // Motorbike number
+                string motorNum = "";
+                this.OpenConnection();
+                string selectCmd = "select num from bienso where emp_no='" + empData.empId + "';";
+                MySqlCommand command3 = new MySqlCommand(selectCmd, connection);
+                MySqlDataReader reader3 = command3.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    while (reader3.Read())
+                    {
+                        if (!reader3.IsDBNull(0))
+                        {
+                            motorNum = reader3.GetString(0);
+                        }
+                            
+                    }
+                }
+                lblMotorNum.Text = motorNum;
+                CloseConnection();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            CloseConnection();
+
             if (lblName.Text != "")
             {
-                updateEmployeeImage(empId);
+                updateEmployeeImage(empData.empId);
             }
             else
             {
                 picBoxEmployee.Image = null;
             }
-
         }
 
         string employeeImageFileSearchById(string dir, string id)
@@ -585,38 +591,6 @@ namespace EmployeeManagement
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            CloseConnection();
-            return false;
-        }
-
-        private bool isEmployeeExist(string id)
-        {
-            try
-            {
-                if (this.OpenConnection() == true)
-                {
-                    MySqlDataReader reader = null;
-                    string selectCmd = "select emp_no from employees where emp_no='" + id + "';";
-
-                    MySqlCommand command = new MySqlCommand(selectCmd, connection);
-                    reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        CloseConnection();
-                        return true;
-                    }
-                    else
-                    {
-                        CloseConnection();
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can not connect to database!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             CloseConnection();
             return false;

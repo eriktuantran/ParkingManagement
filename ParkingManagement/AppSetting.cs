@@ -214,8 +214,8 @@ namespace EmployeeManagementApplicationSetting
                 cboxSuffixFront.Items.Add(val);
                 cboxSuffixRear.Items.Add(val);
             }
-            cboxSuffixFront.SelectedIndex = 1;
-            cboxSuffixRear.SelectedIndex = 1;
+            cboxSuffixFront.SelectedIndex = 4;
+            cboxSuffixRear.SelectedIndex = 4;
 
             updateFrontUrlEvent();
             updateRearUrlEvent();
@@ -469,7 +469,7 @@ namespace EmployeeManagementApplicationSetting
                 if (match.Success)
                 {
                     string _ip = match.Groups[1].ToString();
-                    txtIpFront.Text = _ip;
+                    txtIpRear.Text = _ip;
                     //txtPort.Text = match.Groups[2].ToString(); //port is not changed: 554
                     foreach (string url in cameralist)
                     {

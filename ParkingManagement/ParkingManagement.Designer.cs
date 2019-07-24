@@ -75,7 +75,7 @@
             this.frontCameraStream.Location = new System.Drawing.Point(4, 4);
             this.frontCameraStream.Margin = new System.Windows.Forms.Padding(4);
             this.frontCameraStream.Name = "frontCameraStream";
-            this.frontCameraStream.Size = new System.Drawing.Size(600, 600);
+            this.frontCameraStream.Size = new System.Drawing.Size(650, 600);
             this.frontCameraStream.TabIndex = 0;
             this.frontCameraStream.StreamStarted += new System.EventHandler(this.FrontCamHandleStreamStartedEvent);
             this.frontCameraStream.StreamStopped += new System.EventHandler(this.FrontCamHandleStreamStoppedEvent);
@@ -188,9 +188,9 @@
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.lblId);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(1889, 44);
+            this.panel1.Location = new System.Drawing.Point(2053, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(833, 1263);
+            this.panel1.Size = new System.Drawing.Size(669, 1263);
             this.panel1.TabIndex = 10;
             // 
             // label4
@@ -222,7 +222,7 @@
             this.lblCheckinStatus.AutoSize = true;
             this.lblCheckinStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCheckinStatus.ForeColor = System.Drawing.Color.Red;
-            this.lblCheckinStatus.Location = new System.Drawing.Point(226, 1013);
+            this.lblCheckinStatus.Location = new System.Drawing.Point(169, 1013);
             this.lblCheckinStatus.Name = "lblCheckinStatus";
             this.lblCheckinStatus.Size = new System.Drawing.Size(89, 73);
             this.lblCheckinStatus.TabIndex = 21;
@@ -279,7 +279,7 @@
             this.picBoxEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picBoxEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxEmployee.Location = new System.Drawing.Point(240, 11);
+            this.picBoxEmployee.Location = new System.Drawing.Point(165, 4);
             this.picBoxEmployee.Name = "picBoxEmployee";
             this.picBoxEmployee.Size = new System.Drawing.Size(381, 549);
             this.picBoxEmployee.TabIndex = 15;
@@ -333,9 +333,9 @@
             // frontImageSaved
             // 
             this.frontImageSaved.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frontImageSaved.Location = new System.Drawing.Point(1245, 4);
+            this.frontImageSaved.Location = new System.Drawing.Point(1360, 4);
             this.frontImageSaved.Name = "frontImageSaved";
-            this.frontImageSaved.Size = new System.Drawing.Size(600, 600);
+            this.frontImageSaved.Size = new System.Drawing.Size(650, 600);
             this.frontImageSaved.TabIndex = 12;
             this.frontImageSaved.TabStop = false;
             // 
@@ -352,24 +352,24 @@
             this.panel2.Controls.Add(this.frontImageSaved);
             this.panel2.Location = new System.Drawing.Point(12, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1871, 1263);
+            this.panel2.Size = new System.Drawing.Size(2035, 1263);
             this.panel2.TabIndex = 13;
             // 
             // rearImageCaptured
             // 
             this.rearImageCaptured.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rearImageCaptured.Location = new System.Drawing.Point(624, 636);
+            this.rearImageCaptured.Location = new System.Drawing.Point(682, 636);
             this.rearImageCaptured.Name = "rearImageCaptured";
-            this.rearImageCaptured.Size = new System.Drawing.Size(600, 600);
+            this.rearImageCaptured.Size = new System.Drawing.Size(650, 600);
             this.rearImageCaptured.TabIndex = 16;
             this.rearImageCaptured.TabStop = false;
             // 
             // frontImageCaptured
             // 
             this.frontImageCaptured.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frontImageCaptured.Location = new System.Drawing.Point(624, 4);
+            this.frontImageCaptured.Location = new System.Drawing.Point(682, 4);
             this.frontImageCaptured.Name = "frontImageCaptured";
-            this.frontImageCaptured.Size = new System.Drawing.Size(600, 600);
+            this.frontImageCaptured.Size = new System.Drawing.Size(650, 600);
             this.frontImageCaptured.TabIndex = 15;
             this.frontImageCaptured.TabStop = false;
             // 
@@ -379,7 +379,7 @@
             this.rearCameraStream.Location = new System.Drawing.Point(4, 636);
             this.rearCameraStream.Margin = new System.Windows.Forms.Padding(4);
             this.rearCameraStream.Name = "rearCameraStream";
-            this.rearCameraStream.Size = new System.Drawing.Size(600, 600);
+            this.rearCameraStream.Size = new System.Drawing.Size(650, 600);
             this.rearCameraStream.TabIndex = 14;
             this.rearCameraStream.StreamStarted += new System.EventHandler(this.rearCameraStream_StreamStarted);
             this.rearCameraStream.StreamStopped += new System.EventHandler(this.rearCameraStream_StreamStopped);
@@ -388,9 +388,9 @@
             // rearImageSaved
             // 
             this.rearImageSaved.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rearImageSaved.Location = new System.Drawing.Point(1245, 636);
+            this.rearImageSaved.Location = new System.Drawing.Point(1360, 636);
             this.rearImageSaved.Name = "rearImageSaved";
-            this.rearImageSaved.Size = new System.Drawing.Size(600, 600);
+            this.rearImageSaved.Size = new System.Drawing.Size(650, 600);
             this.rearImageSaved.TabIndex = 13;
             this.rearImageSaved.TabStop = false;
             // 
