@@ -214,8 +214,8 @@ namespace EmployeeManagementApplicationSetting
                 cboxSuffixFront.Items.Add(val);
                 cboxSuffixRear.Items.Add(val);
             }
-            cboxSuffixFront.SelectedIndex = 4;
-            cboxSuffixRear.SelectedIndex = 4;
+            cboxSuffixFront.SelectedIndex = 5;
+            cboxSuffixRear.SelectedIndex = 5;
 
             updateFrontUrlEvent();
             updateRearUrlEvent();

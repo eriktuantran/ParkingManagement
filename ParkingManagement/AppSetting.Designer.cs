@@ -151,7 +151,7 @@
             this.txtIpFront.Name = "txtIpFront";
             this.txtIpFront.Size = new System.Drawing.Size(173, 31);
             this.txtIpFront.TabIndex = 1;
-            this.txtIpFront.Text = "127.0.0.1";
+            this.txtIpFront.Text = "192.168.1.200";
             this.txtIpFront.TextChanged += new System.EventHandler(this.txtIp_TextChanged);
             // 
             // label3
@@ -223,6 +223,7 @@
             this.txtPasswdFront.Name = "txtPasswdFront";
             this.txtPasswdFront.Size = new System.Drawing.Size(173, 31);
             this.txtPasswdFront.TabIndex = 4;
+            this.txtPasswdFront.Text = "hd5432115";
             this.txtPasswdFront.TextChanged += new System.EventHandler(this.txtIp_TextChanged);
             // 
             // label4
@@ -258,6 +259,7 @@
             this.txtUserFront.Name = "txtUserFront";
             this.txtUserFront.Size = new System.Drawing.Size(173, 31);
             this.txtUserFront.TabIndex = 3;
+            this.txtUserFront.Text = "admin";
             this.txtUserFront.TextChanged += new System.EventHandler(this.txtIp_TextChanged);
             // 
             // progressBar1
@@ -319,7 +321,7 @@
             this.txtDbPasswd.Name = "txtDbPasswd";
             this.txtDbPasswd.Size = new System.Drawing.Size(314, 31);
             this.txtDbPasswd.TabIndex = 13;
-            this.txtDbPasswd.Text = "3V5wn0Kv9RRc8gQA";
+            this.txtDbPasswd.Text = "qwer1!2@3#4$";
             this.txtDbPasswd.UseSystemPasswordChar = true;
             this.txtDbPasswd.TextChanged += new System.EventHandler(this.txtDbIP_TextChanged);
             // 
@@ -356,7 +358,7 @@
             this.txtDbUser.Name = "txtDbUser";
             this.txtDbUser.Size = new System.Drawing.Size(314, 31);
             this.txtDbUser.TabIndex = 12;
-            this.txtDbUser.Text = "root";
+            this.txtDbUser.Text = "test";
             this.txtDbUser.TextChanged += new System.EventHandler(this.txtDbIP_TextChanged);
             // 
             // label17
@@ -374,7 +376,7 @@
             this.txtDbIP.Name = "txtDbIP";
             this.txtDbIP.Size = new System.Drawing.Size(314, 31);
             this.txtDbIP.TabIndex = 10;
-            this.txtDbIP.Text = "127.0.0.1";
+            this.txtDbIP.Text = "192.168.1.84";
             this.txtDbIP.TextChanged += new System.EventHandler(this.txtDbIP_TextChanged);
             // 
             // btnOK
@@ -564,6 +566,7 @@
             this.txtPasswdRear.Name = "txtPasswdRear";
             this.txtPasswdRear.Size = new System.Drawing.Size(173, 31);
             this.txtPasswdRear.TabIndex = 4;
+            this.txtPasswdRear.Text = "hd5432115";
             this.txtPasswdRear.TextChanged += new System.EventHandler(this.txtIPRear_TextChanged);
             // 
             // label24
@@ -618,6 +621,7 @@
             this.txtUserRear.Name = "txtUserRear";
             this.txtUserRear.Size = new System.Drawing.Size(173, 31);
             this.txtUserRear.TabIndex = 3;
+            this.txtUserRear.Text = "admin";
             this.txtUserRear.TextChanged += new System.EventHandler(this.txtIPRear_TextChanged);
             // 
             // label27
@@ -635,7 +639,7 @@
             this.txtIpRear.Name = "txtIpRear";
             this.txtIpRear.Size = new System.Drawing.Size(173, 31);
             this.txtIpRear.TabIndex = 1;
-            this.txtIpRear.Text = "127.0.0.1";
+            this.txtIpRear.Text = "192.168.1.201";
             this.txtIpRear.TextChanged += new System.EventHandler(this.txtIPRear_TextChanged);
             // 
             // groupBox1

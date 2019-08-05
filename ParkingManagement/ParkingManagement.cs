@@ -609,7 +609,7 @@ namespace EmployeeManagement
                 if (rowExist)
                 {
                     // Check out
-                    cmd.CommandText = "update parking set checkout=CURRENT_TIMESTAMP,";
+                    cmd.CommandText = "update parking set checkout='"+ timeStamp + "',";
                     cmd.CommandText += "front_out='" + absFrontImageDir + "',";
                     cmd.CommandText += "rear_out='" + absRearImageDir + "' ";
                     cmd.CommandText += "where emp_no='" + id + "' and date='" + date + "' and checkout is NULL;";
