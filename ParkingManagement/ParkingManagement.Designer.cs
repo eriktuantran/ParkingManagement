@@ -40,11 +40,13 @@
             this.lblFrontCamStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime1 = new System.Windows.Forms.Label();
+            this.lblTimeOut = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblMotorNum = new System.Windows.Forms.Label();
             this.lblCheckinStatus = new System.Windows.Forms.Label();
             this.lblTime0 = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
+            this.lblTimeIn = new System.Windows.Forms.Label();
             this.txtRole = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.picBoxEmployee = new System.Windows.Forms.PictureBox();
@@ -176,11 +178,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.lblTime1);
+            this.panel1.Controls.Add(this.lblTimeOut);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblMotorNum);
             this.panel1.Controls.Add(this.lblCheckinStatus);
             this.panel1.Controls.Add(this.lblTime0);
-            this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.lblTimeIn);
             this.panel1.Controls.Add(this.txtRole);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.picBoxEmployee);
@@ -193,12 +197,34 @@
             this.panel1.Size = new System.Drawing.Size(669, 1263);
             this.panel1.TabIndex = 10;
             // 
+            // lblTime1
+            // 
+            this.lblTime1.AutoSize = true;
+            this.lblTime1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime1.ForeColor = System.Drawing.Color.Red;
+            this.lblTime1.Location = new System.Drawing.Point(3, 993);
+            this.lblTime1.Name = "lblTime1";
+            this.lblTime1.Size = new System.Drawing.Size(254, 46);
+            this.lblTime1.TabIndex = 25;
+            this.lblTime1.Text = "Thời gian ra:";
+            // 
+            // lblTimeOut
+            // 
+            this.lblTimeOut.AutoSize = true;
+            this.lblTimeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeOut.ForeColor = System.Drawing.Color.Red;
+            this.lblTimeOut.Location = new System.Drawing.Point(296, 995);
+            this.lblTimeOut.Name = "lblTimeOut";
+            this.lblTimeOut.Size = new System.Drawing.Size(53, 44);
+            this.lblTimeOut.TabIndex = 24;
+            this.lblTimeOut.Text = "...";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(3, 760);
+            this.label4.Location = new System.Drawing.Point(3, 752);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 46);
             this.label4.TabIndex = 23;
@@ -210,7 +236,7 @@
             this.lblMotorNum.AutoSize = true;
             this.lblMotorNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMotorNum.ForeColor = System.Drawing.Color.Red;
-            this.lblMotorNum.Location = new System.Drawing.Point(182, 762);
+            this.lblMotorNum.Location = new System.Drawing.Point(182, 754);
             this.lblMotorNum.Name = "lblMotorNum";
             this.lblMotorNum.Size = new System.Drawing.Size(56, 44);
             this.lblMotorNum.TabIndex = 22;
@@ -220,11 +246,11 @@
             // lblCheckinStatus
             // 
             this.lblCheckinStatus.AutoSize = true;
-            this.lblCheckinStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckinStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCheckinStatus.ForeColor = System.Drawing.Color.Red;
-            this.lblCheckinStatus.Location = new System.Drawing.Point(169, 1013);
+            this.lblCheckinStatus.Location = new System.Drawing.Point(169, 1094);
             this.lblCheckinStatus.Name = "lblCheckinStatus";
-            this.lblCheckinStatus.Size = new System.Drawing.Size(89, 73);
+            this.lblCheckinStatus.Size = new System.Drawing.Size(103, 85);
             this.lblCheckinStatus.TabIndex = 21;
             this.lblCheckinStatus.Text = "...";
             // 
@@ -233,22 +259,22 @@
             this.lblTime0.AutoSize = true;
             this.lblTime0.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime0.ForeColor = System.Drawing.Color.Red;
-            this.lblTime0.Location = new System.Drawing.Point(3, 934);
+            this.lblTime0.Location = new System.Drawing.Point(3, 918);
             this.lblTime0.Name = "lblTime0";
-            this.lblTime0.Size = new System.Drawing.Size(205, 46);
+            this.lblTime0.Size = new System.Drawing.Size(284, 46);
             this.lblTime0.TabIndex = 20;
-            this.lblTime0.Text = "Thời gian:";
+            this.lblTime0.Text = "Thời gian vào:";
             // 
-            // lblTime
+            // lblTimeIn
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.Red;
-            this.lblTime.Location = new System.Drawing.Point(232, 936);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(53, 44);
-            this.lblTime.TabIndex = 19;
-            this.lblTime.Text = "...";
+            this.lblTimeIn.AutoSize = true;
+            this.lblTimeIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeIn.ForeColor = System.Drawing.Color.Red;
+            this.lblTimeIn.Location = new System.Drawing.Point(296, 920);
+            this.lblTimeIn.Name = "lblTimeIn";
+            this.lblTimeIn.Size = new System.Drawing.Size(53, 44);
+            this.lblTimeIn.TabIndex = 19;
+            this.lblTimeIn.Text = "...";
             // 
             // txtRole
             // 
@@ -256,7 +282,7 @@
             this.txtRole.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRole.ForeColor = System.Drawing.Color.Red;
-            this.txtRole.Location = new System.Drawing.Point(284, 852);
+            this.txtRole.Location = new System.Drawing.Point(284, 836);
             this.txtRole.Multiline = true;
             this.txtRole.Name = "txtRole";
             this.txtRole.ReadOnly = true;
@@ -268,7 +294,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(3, 852);
+            this.label2.Location = new System.Drawing.Point(3, 836);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(254, 46);
             this.label2.TabIndex = 17;
@@ -290,7 +316,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(3, 679);
+            this.label3.Location = new System.Drawing.Point(3, 675);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 46);
             this.label3.TabIndex = 14;
@@ -301,7 +327,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.Red;
-            this.lblName.Location = new System.Drawing.Point(157, 681);
+            this.lblName.Location = new System.Drawing.Point(157, 677);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(53, 44);
             this.lblName.TabIndex = 13;
@@ -462,7 +488,7 @@
         private System.Windows.Forms.CheckBox chkTest;
         private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label lblTime0;
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblTimeIn;
         private System.Windows.Forms.PictureBox frontImageSaved;
         private System.Windows.Forms.Label lblCheckinStatus;
         private System.Windows.Forms.Panel panel2;
@@ -475,6 +501,8 @@
         private System.Windows.Forms.ToolStripMenuItem employeesMotobikeToolStripMenuItem;
         private System.Windows.Forms.PictureBox frontImageCaptured;
         private System.Windows.Forms.PictureBox rearImageCaptured;
+        private System.Windows.Forms.Label lblTime1;
+        private System.Windows.Forms.Label lblTimeOut;
     }
 }
 

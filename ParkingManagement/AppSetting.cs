@@ -35,8 +35,6 @@ namespace EmployeeManagementApplicationSetting
         MyDictionary globalDictionary = new MyDictionary();
         Configuration config;
 
-        //Camera searcher
-        private CameraURLBuilderWF myCameraUrlBuilder;
         private string[] cameralist = { ""};
         //private string[] cameralist = {
         //    "rtsp://192.168.1.119:554/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream",
@@ -50,8 +48,6 @@ namespace EmployeeManagementApplicationSetting
         {
             InitializeComponent();
             intialValue();
-
-            myCameraUrlBuilder = new CameraURLBuilderWF();
 
             config = new Configuration();
 
@@ -433,54 +429,59 @@ namespace EmployeeManagementApplicationSetting
 
         private void btnFrontCamSelect_Click(object sender, EventArgs e)
         {
-            var result = myCameraUrlBuilder.ShowDialog();
+            MessageBox.Show("Feature not support!" , "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            if (result == DialogResult.OK)
-            {
-                string resultStr = myCameraUrlBuilder.CameraURL;
-                Regex ip = new Regex(@"\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d+).*\b");
-                Match match = ip.Match(resultStr);
-                if (match.Success)
-                {
-                    string _ip = match.Groups[1].ToString();
-                    txtIpFront.Text = _ip;
-                    //txtPort.Text = match.Groups[2].ToString(); //port is not changed: 554
-                    foreach (string url in cameralist)
-                    {
-                        if (url.Contains(_ip))
-                        {
-                            txtUrlFront.Text = url;
-                            break;
-                        }
-                    }
-                }
-            }
+            //CameraURLBuilderWF myCameraUrlBuilder = new CameraURLBuilderWF();
+            //var result = myCameraUrlBuilder.ShowDialog();
+
+            //if (result == DialogResult.OK)
+            //{
+            //    string resultStr = myCameraUrlBuilder.CameraURL;
+            //    Regex ip = new Regex(@"\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d+).*\b");
+            //    Match match = ip.Match(resultStr);
+            //    if (match.Success)
+            //    {
+            //        string _ip = match.Groups[1].ToString();
+            //        txtIpFront.Text = _ip;
+            //        //txtPort.Text = match.Groups[2].ToString(); //port is not changed: 554
+            //        foreach (string url in cameralist)
+            //        {
+            //            if (url.Contains(_ip))
+            //            {
+            //                txtUrlFront.Text = url;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void btnRearCamSelect_Click(object sender, EventArgs e)
         {
-            var result = myCameraUrlBuilder.ShowDialog();
+            MessageBox.Show("Feature not support!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //CameraURLBuilderWF myCameraUrlBuilder = new CameraURLBuilderWF();
+            //var result = myCameraUrlBuilder.ShowDialog();
 
-            if (result == DialogResult.OK)
-            {
-                string resultStr = myCameraUrlBuilder.CameraURL;
-                Regex ip = new Regex(@"\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d+).*\b");
-                Match match = ip.Match(resultStr);
-                if (match.Success)
-                {
-                    string _ip = match.Groups[1].ToString();
-                    txtIpRear.Text = _ip;
-                    //txtPort.Text = match.Groups[2].ToString(); //port is not changed: 554
-                    foreach (string url in cameralist)
-                    {
-                        if (url.Contains(_ip))
-                        {
-                            txtUrlRear.Text = url;
-                            break;
-                        }
-                    }
-                }
-            }
+            //if (result == DialogResult.OK)
+            //{
+            //    string resultStr = myCameraUrlBuilder.CameraURL;
+            //    Regex ip = new Regex(@"\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d+).*\b");
+            //    Match match = ip.Match(resultStr);
+            //    if (match.Success)
+            //    {
+            //        string _ip = match.Groups[1].ToString();
+            //        txtIpRear.Text = _ip;
+            //        //txtPort.Text = match.Groups[2].ToString(); //port is not changed: 554
+            //        foreach (string url in cameralist)
+            //        {
+            //            if (url.Contains(_ip))
+            //            {
+            //                txtUrlRear.Text = url;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void chkDisplayTime_CheckStateChanged(object sender, EventArgs e)

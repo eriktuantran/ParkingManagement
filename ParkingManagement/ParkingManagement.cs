@@ -67,7 +67,7 @@ namespace EmployeeManagement
             }
 
             // Display time
-            lblTime0.Visible = lblTime.Visible = isDisplayTime;
+            lblTime0.Visible = lblTimeIn.Visible = lblTime1.Visible = lblTimeOut.Visible = isDisplayTime;
 
             // Manual mode
             manualMode = chkTest.Checked;
@@ -195,7 +195,7 @@ namespace EmployeeManagement
                 }
                 if (_barcode.Count == 1)
                 {
-                    lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
+                    lblName.Text = txtRole.Text = lblTimeIn.Text= lblTimeOut.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
                     picBoxEmployee.Image = null;
                 }
                 
@@ -221,7 +221,7 @@ namespace EmployeeManagement
                 EmployeeData empData = getEmployeeDataIfExist(empId);
                 if (!empData.exist)
                 {
-                    lblId.Text = lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
+                    lblId.Text = lblName.Text = txtRole.Text = lblTimeIn.Text = lblTimeOut.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
                     picBoxEmployee.Image = null;
                     Console.WriteLine("Employee does not exist: " + empId);
                     return;
@@ -240,6 +240,7 @@ namespace EmployeeManagement
                         int remain = (int)(minTimeBetweenScanSteps - timeDiff);
                         Console.WriteLine("Duplicated activities");
                         lblId.Text = "Đã thực hiện!";
+                        lblName.Text = "Thử lại sau: " + remain.ToString() + " giây!";
                         return;
                     }
                     else
@@ -261,20 +262,23 @@ namespace EmployeeManagement
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
                     string frontImageCheckIn = "";
                     string rearImageCheckIn = "";
-                    bool rowExist = isParkingRowExist(empId, date, out frontImageCheckIn, out rearImageCheckIn);
+                    string timeCheckin = "tuan";
+                    bool rowExist = isParkingRowExist(empId, date, out frontImageCheckIn, out rearImageCheckIn, out timeCheckin);
                     Console.WriteLine(rowExist);
                     Console.WriteLine(frontImageCheckIn + "_" + rearImageCheckIn);
                     updateTimeInOut(empId, absFrontImageDir, absRearImageDir, rowExist);
                     displayNameAndImage(empData);
-                    displayTime();
+                    
                     if (!rowExist) //checkin
                     {
+                        displayTimeIn();
                         //displayImageWindow(absFrontImageDir, absRearImageDir);
                         //It has already done at captureCamera 1/2
                     }
                     else //checkout
                     {
-                        displayImageWindowStoredInDb(rearImageCheckIn, frontImageCheckIn);
+                        displayImageWindowStoredInDb(frontImageCheckIn, rearImageCheckIn);
+                        displayTimeOut(timeCheckin);
                     }
 
                     // Timer to clean up screen
@@ -308,15 +312,27 @@ namespace EmployeeManagement
             {
                 lblId.Text = "";
             }
-            lblName.Text = txtRole.Text = lblTime.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
+            lblName.Text = txtRole.Text = lblTimeIn.Text= lblTimeOut.Text = lblCheckinStatus.Text = lblMotorNum.Text = "";
             picBoxEmployee.Image = null;
         }
 
-        void displayTime()
+        void displayTimeIn()
         {
             DateTime now = DateTime.Now;
             string timeStamp = now.ToString("yyyy-MM-dd HH:mm:ss");
-            lblTime.Text = timeStamp;
+            lblTimeIn.Text = timeStamp;
+        }
+        void displayTimeOut(string timeCheckin)
+        {
+            DateTime now = DateTime.Now;
+            string timeStamp = now.ToString("yyyy-MM-dd HH:mm:ss");
+            lblTimeOut.Text = timeStamp;
+            try
+            {
+                DateTime prev = DateTime.Parse(timeCheckin);
+                lblTimeIn.Text = prev.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            catch { }
         }
 
         void clearImageWindow()
@@ -553,16 +569,17 @@ namespace EmployeeManagement
             }
         }
 
-        private bool isParkingRowExist(string id, string date, out string frontIn, out string rearIn)
+        private bool isParkingRowExist(string id, string date, out string frontIn, out string rearIn, out string timeCheckin)
         {
             frontIn = "";
             rearIn = "";
+            timeCheckin = "";
             try
             {
                 if (this.OpenConnection() == true)
                 {
                     MySqlDataReader reader = null;
-                    string selectCmd = "select emp_no,front_in,rear_in from parking where emp_no='" + id+"' and date='" + date + "' and checkout is NULL;";
+                    string selectCmd = "select emp_no,front_in,rear_in,checkin from parking where emp_no='" + id+"' and date='" + date + "' and checkout is NULL;";
 
                     MySqlCommand command = new MySqlCommand(selectCmd, connection);
                     reader = command.ExecuteReader();
@@ -575,6 +592,7 @@ namespace EmployeeManagement
                             {
                                 frontIn = reader.GetString(1);
                                 rearIn = reader.GetString(2);
+                                timeCheckin = reader.GetString(3);
                             }
                             catch { }
                         }
@@ -637,7 +655,7 @@ namespace EmployeeManagement
         {
             getValueFromSettingForm();
 
-            lblTime0.Visible = lblTime.Visible = isDisplayTime;
+            lblTime0.Visible = lblTimeIn.Visible = lblTime1.Visible = lblTimeOut.Visible = isDisplayTime;
         }
 
         private void playButton_Click(object sender, EventArgs e)
