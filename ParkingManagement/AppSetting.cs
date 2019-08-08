@@ -8,7 +8,6 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Ozeki.Media;
 using System.Text.RegularExpressions;
 using MyDictionary = System.Collections.Generic.Dictionary<string, string>;
 
